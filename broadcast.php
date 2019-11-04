@@ -4,11 +4,8 @@ require_once __DIR__ . '/linebot_lib/linebot.php';
 require_once 'phpQuery-onefile.php';
 
 $bot = new LineBotClass(false);
-
 $bot->add_flex_builder("今日のホットなイベントだよ", createEventSearchMessage());
-
 $bot->push_broadcast();
-
 
 function createEventSearchMessage() {
     $flex_bubble = array();
@@ -19,15 +16,12 @@ function createEventSearchMessage() {
     return $flex_bubble;
 }
 
-
 function getEventList() {
     $html = file_get_contents('https://www.walkerplus.com/event_list/ar0300/');
     $doc = phpQuery::newDocument($html);
     $list = $doc[".m-mainlist-item"];
   return $list;
 }
-
-
 
 function createFlexMessage($item) {
     $title = pq($item)->find('a:eq(0)')->text();
