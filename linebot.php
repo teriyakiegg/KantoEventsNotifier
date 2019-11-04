@@ -71,7 +71,7 @@ class LineBotClass extends LINEBot
 		parent::__construct($http_client, ['channelSecret' => $channelSecret]);
 		if ($default) {
 			// LINEAPIが付与した署名を取得
-			$signature = getenv('HTTP_' . HTTPHeader::LINE_SIGNATURE];
+                        $signature = $_SERVER['HTTP_' . HTTPHeader::LINE_SIGNATURE];
 			// 署名が正当かチェック、正当ならリクエストをパースし配列に代入
 			$this->events = $this->parseEventRequest(file_get_contents('php://input'),$signature);
 		}
