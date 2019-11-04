@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/linebot.php';
+require_once __DIR__ . '/linebot_lib/linebot.php';
 require_once 'phpQuery-onefile.php';
 
 $bot = new LineBotClass();

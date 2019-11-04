@@ -1,0 +1,3 @@
+[submodule "linebot_lib"]
+	path = linebot_lib
+	url = https://github.com/teriyakiegg/linebot_lib.git
