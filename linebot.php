@@ -70,10 +70,13 @@ class LineBotClass extends LINEBot
 		// $this->$bot = new LINEBot($http_client, ['channelSecret' => $channelSecret]);
 		parent::__construct($http_client, ['channelSecret' => $channelSecret]);
 		if ($default) {
+
+                        // broadcastのscheduler実行のためにコメントアウト
+
 			// LINEAPIが付与した署名を取得
-			$signature = $_SERVER['HTTP_' . HTTPHeader::LINE_SIGNATURE];
+			//$signature = getenv('HTTP_' . HTTPHeader::LINE_SIGNATURE];
 			// 署名が正当かチェック、正当ならリクエストをパースし配列に代入
-			$this->events = $this->parseEventRequest(file_get_contents('php://input'),$signature);
+			//$this->events = $this->parseEventRequest(file_get_contents('php://input'),$signature);
 		}
 
 		// flexメッセージのライブラリ読み込み
