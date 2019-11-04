@@ -1822,6 +1822,31 @@ class LineBotClass extends LINEBot
 		}
 	}
 
+        /**
+	 * 全ユーザーにメッセージを送る
+	 * @return bool        成功ならtrue 失敗ならfalse
+	 */
+	public function broadcast()
+	{
+		if (count($this->builder_stok) > 0) {
+			$builder = new MultiMessageBuilder();
+			foreach ($this->builder_stok as $key => $row) {
+				$builder -> add($row);
+			}
+			$response = $this -> pushToAll($builder);
+			if ($response -> isSucceeded() == false) {
+				error_log("深刻な返信エラー" . $response->getHTTPStatus() . ' ' . $response->getRawBody());
+				$this->set_error("深刻な返信エラー" . $response->getHTTPStatus() . ' ' . $response->getRawBody());
+				return false;
+			}else{
+				return true;
+			}
+		}else{
+			$this->set_error("送信するビルダーがありません");
+			return false;
+		}
+	}
+
 	/**
 	 * ビルダーストックを削除(初期化)
 	 * @param  string $delete_type 何も指定しなければ全て削除 lastを指定すれば最後の要素を削除

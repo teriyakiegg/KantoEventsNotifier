@@ -161,6 +161,19 @@ class LINEBot
     }
 
     /**
+     * Sends arbitrary message to all destinations.
+     *
+     * @param MessageBuilder $messageBuilder Message builder to send.
+     * @return Response
+     */
+    public function pushToAll(MessageBuilder $messageBuilder)
+    {
+        return $this->httpClient->post($this->endpointBase . '/v2/bot/message/broadcast', [
+            'messages' => $messageBuilder->buildMessage(),
+        ]);
+    }
+
+    /**
      * Leaves from group.
      *
      * @param string $groupId Identifier of group to leave.
