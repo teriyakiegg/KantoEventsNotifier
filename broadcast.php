@@ -4,7 +4,7 @@ require_once __DIR__ . '/linebot_lib/linebot.php';
 require_once 'phpQuery-onefile.php';
 
 $bot = new LineBotClass(false);
-$bot->add_flex_builder("今日のホットなイベントだよ", createEventSearchMessage());
+$bot->add_flex_builder("関東の今ホットなイベントだよ。チェックしてね", createEventSearchMessage());
 $bot->push_broadcast();
 
 function createEventSearchMessage() {
